@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import '../neumorphic_box.dart';
+import '../../../widgets/neumorphic_box.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({super.key});

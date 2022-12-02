@@ -1,11 +1,11 @@
 //widgets are in lib/widgets/podcast_page_widgets - named as the comments above them
 
 import 'package:flutter/material.dart';
-import '../../widgets/podcast_page_widgets/control_buttons.dart';
-import '../../widgets/podcast_page_widgets/podcast_info_card.dart';
-import '../../widgets/podcast_page_widgets/podcast_time.dart';
-import '../../widgets/podcast_page_widgets/progress_bar.dart';
-import '../../widgets/podcast_page_widgets/top_icons_row.dart';
+import 'podcast_page_widgets/control_buttons.dart';
+import 'podcast_page_widgets/podcast_info_card.dart';
+import 'podcast_page_widgets/podcast_time.dart';
+import 'podcast_page_widgets/progress_bar.dart';
+import 'podcast_page_widgets/top_icons_row.dart';
 
 class PodcastPage extends StatelessWidget {
   final String podcastName;

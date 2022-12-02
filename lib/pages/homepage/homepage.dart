@@ -1,13 +1,12 @@
-//widgets are in lib/widgets/homepage_widgets - named as the comments above them
 import 'package:flutter/material.dart';
-import 'package:podcast_app/widgets/homepage_widgets/featuring.dart';
-import 'package:podcast_app/widgets/homepage_widgets/featuring_podcast.dart';
-import 'package:podcast_app/widgets/homepage_widgets/greetings.dart';
-import 'package:podcast_app/widgets/homepage_widgets/podcast_name.dart';
-import 'package:podcast_app/widgets/homepage_widgets/popular_name.dart';
-import 'package:podcast_app/widgets/homepage_widgets/search.dart';
+import 'package:podcast_app/pages/homepage/homepage_widgets/featuring.dart';
+import 'package:podcast_app/pages/homepage/homepage_widgets/featuring_podcast.dart';
+import 'package:podcast_app/pages/homepage/homepage_widgets/greetings.dart';
+import 'package:podcast_app/pages/homepage/homepage_widgets/podcast_name.dart';
+import 'package:podcast_app/pages/homepage/homepage_widgets/popular_name.dart';
+import 'package:podcast_app/pages/homepage/homepage_widgets/search.dart';
 
-import '../widgets/homepage_widgets/popular_list.dart';
+import 'homepage_widgets/popular_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

@@ -35,14 +35,14 @@ class PopularPodcastsList extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.all(5),
                   child: ClipOval(
-                    child: Image(
-                      height: 60,
-                      width: 60,
-                      image: NetworkImage(
-                          'https://dev-vickie.github.io/images-storage/vmimage.png'),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                      // child: Image(
+                      //   height: 60,
+                      //   width: 60,
+                      //   image: NetworkImage(
+                      //       'https://dev-vickie.github.io/images-storage/vmimage.png'),
+                      //   fit: BoxFit.fill,
+                      // ),
+                      ),
                 ),
                 const SizedBox(width: 2),
                 //Podcast name and Podcast producer's name

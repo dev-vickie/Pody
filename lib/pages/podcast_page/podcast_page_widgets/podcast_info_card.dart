@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../neumorphic_box.dart';
+import '../../../widgets/neumorphic_box.dart';
 
 class PodcastInfo extends StatelessWidget {
   final String podcast;

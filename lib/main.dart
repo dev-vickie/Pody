@@ -70,7 +70,7 @@ class _SplashPageState extends State<SplashPage>
         child: const Icon(
           Icons.mic,
           color: Colors.white,
-          size: 50,
+          size: 60,
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../neumorphic_box.dart';
+import '../../../widgets/neumorphic_box.dart';
 
 class ControlButtons extends StatelessWidget {
   const ControlButtons({super.key});
