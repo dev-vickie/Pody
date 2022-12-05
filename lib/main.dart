@@ -16,5 +16,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// Display splash for 3 sec,then navigate to the onboarding pages
