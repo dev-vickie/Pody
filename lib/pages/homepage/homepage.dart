@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:podcast_app/constants/constants.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/featuring.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/featuring_podcast.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/greetings.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: mainAppColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -48,7 +49,7 @@ class HomePage extends StatelessWidget {
                 height: 15,
               ),
 
-              // popular
+              // popular and view all text
               PopularName(),
               SizedBox(height: 10),
 
@@ -65,6 +66,7 @@ class HomePage extends StatelessWidget {
                 podcastName: 'Flutter for beginners',
                 producerName: 'Victor Mutethia',
               ),
+              SizedBox(height: 10),
             ],
           ),
         ),

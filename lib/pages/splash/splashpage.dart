@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../onbording_pages/onboarding_main.dart';
+import '../onbording_pages/onboarding_main_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:podcast_app/constants/constants.dart';
 
 class NeuBox extends StatelessWidget {
   final Widget child;
@@ -9,7 +10,7 @@ class NeuBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: Colors.blue[100],
+        color: mainAppColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(

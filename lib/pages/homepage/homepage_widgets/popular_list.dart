@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:podcast_app/pages/podcast_page/podcast_page.dart';
-import 'package:podcast_app/widgets/neumorphic_box.dart';
+import 'package:podcast_app/utils/neumorphic_box.dart';
 
 class PopularPodcastsList extends StatelessWidget {
   final String podcastName;
   final String producerName;
-  const PopularPodcastsList(
-      {super.key, required this.podcastName, required this.producerName});
+  const PopularPodcastsList({
+    super.key,
+    required this.podcastName,
+    required this.producerName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,7 @@ class PopularPodcastsList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 2),
+                const SizedBox(width: 4),
                 //Podcast name and Podcast producer's name
 
                 Expanded(
@@ -53,15 +56,15 @@ class PopularPodcastsList extends StatelessWidget {
                     children: [
                       const SizedBox(height: 5),
                       Text(
-                        podcastName,
+                        podcastName, //podcast name
                         style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      const SizedBox(height: 4),
                       Text(
-                        producerName,
+                        producerName, //producer
                         style: GoogleFonts.openSans(),
                       ),
                       const SizedBox(height: 3),

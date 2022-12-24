@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:podcast_app/pages/podcast_page/podcast_page.dart';
-import 'package:podcast_app/widgets/neumorphic_box.dart';
+
+import '../../../utils/neumorphic_box.dart';
 
 class FeaturingPodcastCard extends StatelessWidget {
   final String podcastName;

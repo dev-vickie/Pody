@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../widgets/neumorphic_box.dart';
+import '../../../utils/neumorphic_box.dart';
 
 class PodcastInfo extends StatelessWidget {
   final String podcast;
@@ -15,7 +15,10 @@ class PodcastInfo extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset('assets/podcastimage.png'),
+            child: Image.asset(
+              'assets/podcastimage.png',
+              height: MediaQuery.of(context).size.height * 0.50,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(6),

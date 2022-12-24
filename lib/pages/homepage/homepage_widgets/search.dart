@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:podcast_app/widgets/neumorphic_box.dart';
+import 'package:podcast_app/utils/neumorphic_box.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});

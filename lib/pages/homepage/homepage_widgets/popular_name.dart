@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:podcast_app/pages/homepage/list_all/list_all.dart';
 
 class PopularName extends StatelessWidget {
   const PopularName({super.key});
@@ -21,9 +22,18 @@ class PopularName extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(right: 20),
-          child: Text(
-            'View all',
-            style: TextStyle(color: Colors.grey[700]),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ViewAll(),
+                ),
+              );
+            },
+            child: Text(
+              'View all',
+              style: TextStyle(color: Colors.grey[700]),
+            ),
           ),
         ),
       ],

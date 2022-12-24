@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../widgets/neumorphic_box.dart';
+import '../../../utils/neumorphic_box.dart';
 
 class ControlButtons extends StatelessWidget {
   const ControlButtons({super.key});
@@ -8,7 +8,7 @@ class ControlButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
+      height: 60,
       child: Row(
         children: const [
           Expanded(
