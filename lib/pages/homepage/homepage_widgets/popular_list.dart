@@ -4,12 +4,14 @@ import 'package:podcast_app/pages/podcast_page/podcast_page.dart';
 import 'package:podcast_app/utils/neumorphic_box.dart';
 
 class PopularPodcastsList extends StatelessWidget {
+  final String pictureUrl;
   final String podcastName;
   final String producerName;
   const PopularPodcastsList({
     super.key,
     required this.podcastName,
     required this.producerName,
+    required this.pictureUrl
   });
 
   @override
@@ -35,13 +37,13 @@ class PopularPodcastsList extends StatelessWidget {
               children: [
                 //Container for image icon
 
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(5),
                   child: ClipOval(
                     child: Image(
                       height: 60,
                       width: 60,
-                      image: AssetImage('assets/vmimage.png'),
+                      image: AssetImage(pictureUrl),
                       fit: BoxFit.fill,
                     ),
                   ),

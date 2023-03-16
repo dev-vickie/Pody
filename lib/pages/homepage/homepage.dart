@@ -7,6 +7,7 @@ import 'package:podcast_app/pages/homepage/homepage_widgets/podcast_name.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/popular_name.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/search.dart';
 
+import '../../models/podcast_model.dart';
 import 'homepage_widgets/popular_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,53 +21,53 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               //greetings
-              Greetings(username: 'melisa'),
-              SizedBox(
+              const Greetings(username: 'melisa'),
+              const SizedBox(
                 height: 10,
               ),
               //podcast header name
-              PodcastHeader(),
-              SizedBox(
+              const PodcastHeader(),
+              const SizedBox(
                 height: 40,
               ),
 
               //search
-              Search(),
-              SizedBox(height: 40),
+              const Search(),
+              const SizedBox(height: 40),
 
               //featuring
-              FeaturingPodcast(),
-              SizedBox(height: 20),
+              const FeaturingPodcast(),
+              const SizedBox(height: 20),
 
               //featuring podcast card
-              FeaturingPodcastCard(
+              const FeaturingPodcastCard(
                 podcastName: 'CODE LIFE BALANCE',
                 producerName: 'Victor Mutethia',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
               // popular and view all text
-              PopularName(),
-              SizedBox(height: 10),
+              const PopularName(),
+              const SizedBox(height: 10),
 
               //popular list
-              PopularPodcastsList(
-                podcastName: 'Building Scrollable Experiences',
-                producerName: 'victor Mutethia',
+              SizedBox(
+                height: 300,
+                child: ListView.builder(
+                    itemCount: podcasts.length,
+                    itemBuilder: (context, index) {
+                      Podcast podcast = podcasts[index];
+                      return PopularPodcastsList(
+                          podcastName: podcast.name,
+                          producerName: podcast.producer,
+                          pictureUrl: podcast.pictureUrl);
+                    }),
               ),
-              PopularPodcastsList(
-                podcastName: 'Flutter : The iOS way',
-                producerName: 'Victor Mutethia',
-              ),
-              PopularPodcastsList(
-                podcastName: 'Flutter for beginners',
-                producerName: 'Victor Mutethia',
-              ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           ),
         ),
