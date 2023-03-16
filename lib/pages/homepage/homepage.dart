@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                 child: ListView.builder(
                     itemCount: podcasts.length,
                     itemBuilder: (context, index) {
-                      Podcast podcast = podcasts[index];
+                      PodcastItem podcast = podcasts[index];
                       return PopularPodcastsList(
                           podcastName: podcast.name,
                           producerName: podcast.producer,

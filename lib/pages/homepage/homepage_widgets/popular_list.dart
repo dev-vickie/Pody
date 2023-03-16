@@ -38,7 +38,7 @@ class PopularPodcastsList extends StatelessWidget {
                 //Container for image icon
 
                 Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: ClipOval(
                     child: Image(
                       height: 60,
