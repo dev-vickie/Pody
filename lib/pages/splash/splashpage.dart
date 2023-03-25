@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:podcast_app/pages/homepage/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../onbording_pages/onboarding_main_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -11,10 +13,26 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage>
     with SingleTickerProviderStateMixin {
   late AnimationController fadeController;
+
   late Animation animation;
+
+  bool hideOnboarding = false;
+
+  void isFirstTime() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final res = prefs.getBool("hideOnboarding");
+    if (res != null) {
+      setState(() {
+        hideOnboarding = res;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    isFirstTime();
     fadeController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
@@ -41,7 +59,9 @@ class _SplashPageState extends State<SplashPage>
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const OnboardingScreen(),
+            builder: (context) => hideOnboarding == true
+                ? const HomePage()
+                : const OnboardingScreen(),
           ),
         );
       },

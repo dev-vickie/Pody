@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../homepage/homepage.dart';
@@ -15,13 +16,20 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
+
   bool onLastPage = false;
+
   //skip,next,done TextStyle()
   TextStyle footerTextStyle = const TextStyle(
     fontSize: 25,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  void doNotShowAgain() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool("hideOnboarding", true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onLastPage
                     ? GestureDetector(
                         onTap: () {
+                          doNotShowAgain();
                           Navigator.pop(context);
                           Navigator.push(
                             context,
