@@ -10,7 +10,7 @@ class EndDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Drawer(
-        backgroundColor: mainAppColor,
+        backgroundColor: AppColors.mainAppColor,
         child: Padding(
           padding: const EdgeInsets.all(6),
           child: Column(

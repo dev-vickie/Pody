@@ -62,7 +62,7 @@ class _PodcastPageState extends State<PodcastPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: const EndDrawer(),
-      backgroundColor: mainAppColor,
+      backgroundColor: AppColors.mainAppColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),

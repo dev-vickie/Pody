@@ -8,7 +8,7 @@ class ViewAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mainAppColor,
+      backgroundColor: AppColors.mainAppColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

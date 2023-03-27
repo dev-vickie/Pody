@@ -1,3 +1,5 @@
 import 'package:flutter/material.dart';
 
-final mainAppColor = Colors.blue[100];
+class AppColors {
+  static const mainAppColor = Color.fromRGBO(187, 222, 251, 1);
+}

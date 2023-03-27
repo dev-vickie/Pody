@@ -10,7 +10,7 @@ class NeuBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: mainAppColor,
+        color: AppColors.mainAppColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
