@@ -58,13 +58,15 @@ class FeaturingPodcastCard extends StatelessWidget {
                   //listen button
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => PodcastPage(
-                              podcastName: podcastName,
-                              producerName: producerName),
-                        ),
-                      );
+                      //TODO:Add "featuring" feature
+
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => PodcastPage(
+                      //         podcastName: podcastName,
+                      //         producerName: producerName),
+                      //   ),
+                      // );
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),

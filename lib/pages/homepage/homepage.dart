@@ -1,73 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:podcast_app/constants/constants.dart';
+import 'package:podcast_app/models/podcast_model.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/featuring.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/featuring_podcast.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/greetings.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/podcast_name.dart';
 import 'package:podcast_app/pages/homepage/homepage_widgets/popular_name.dart';
-import 'package:podcast_app/pages/homepage/homepage_widgets/search.dart';
 
-import '../../models/podcast_model.dart';
+import '../../logic/podcast_controller.dart';
 import 'homepage_widgets/popular_list.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: AppColors.mainAppColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               //greetings
-              Greetings(username: 'melisa'),
-              SizedBox(
+              const Greetings(username: 'melisa'),
+              const SizedBox(
                 height: 10,
               ),
               //podcast header name
-              PodcastHeader(),
-              SizedBox(
+              const PodcastHeader(),
+              const SizedBox(
                 height: 40,
               ),
 
               //featuring
-              FeaturingPodcast(),
-              SizedBox(height: 20),
+              const FeaturingPodcast(),
+              const SizedBox(height: 20),
 
               //featuring podcast card
-              FeaturingPodcastCard(
+              const FeaturingPodcastCard(
                 podcastName: 'CODE LIFE BALANCE',
                 producerName: 'Victor Mutethia',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
               // popular and view all text
-              PopularName(),
-              SizedBox(height: 10),
+              const PopularName(),
+              const SizedBox(height: 10),
 
               //popular list
-              // SizedBox(
-              //   height: 300,
-              //   child: ListView.builder(
-              //       itemCount: podcasts.length,
-              //       itemBuilder: (context, index) {
-              //         PodcastItem podcast = podcasts[index];
-              //         return PopularPodcastsList(
-              //             podcastName: podcast.name,
-              //             producerName: podcast.producer,
-              //             pictureUrl: podcast.pictureUrl);
-              //       }),
-              // ),
-              SizedBox(height: 10),
+              buildPopularList(ref),
+
+              const SizedBox(height: 10),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget buildPopularList(WidgetRef ref) {
+  return SizedBox(
+    height: 300,
+    child: ref.watch(getPodcastsProvider).when(
+          data: (podcasts) {
+            List<PodcastItem> popularPodcasts = podcasts.take(3).toList();
+            return ListView.builder(
+              itemCount: popularPodcasts.length,
+              itemBuilder: (context, index) {
+                final podcast = popularPodcasts[index];
+                return PopularPodcastsList(
+                  podcast: podcast,
+                );
+              },
+            );
+          },
+          error: (error, stackTrace) =>
+              const Center(child: Text("Something happened")),
+          loading: () => const Center(child: CircularProgressIndicator()),
+        ),
+  );
 }

@@ -2,17 +2,16 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:podcast_app/utils/neumorphic_box.dart';
 import '../../constants/constants.dart';
+import '../../models/podcast_model.dart';
 import 'podcast_page_widgets/end_drawer.dart';
 import 'podcast_page_widgets/podcast_info_card.dart';
 import 'podcast_page_widgets/top_icons_row.dart';
 
 class PodcastPage extends StatefulWidget {
-  final String podcastName;
-  final String producerName;
+  final PodcastItem podcast;
   const PodcastPage({
+    required this.podcast,
     super.key,
-    required this.podcastName,
-    required this.producerName,
   });
 
   @override
@@ -27,7 +26,7 @@ class _PodcastPageState extends State<PodcastPage> {
 
   @override
   void initState() {
-    setAudio();
+    setAudio(widget.podcast.audioUrl);
     audioPlayer.onPlayerStateChanged.listen((event) {
       if (mounted) {
         setState(() {
@@ -52,10 +51,9 @@ class _PodcastPageState extends State<PodcastPage> {
     super.initState();
   }
 
-  Future setAudio() async {
-    String url =
-        'https://firebasestorage.googleapis.com/v0/b/reddit-184a2.appspot.com/o/y2mate.com%20-%20NYASHINSKI%20%20TOP%20FORM%20Official%20Audio.mp3?alt=media&token=1386c2f2-45e7-46c4-aab5-357432336bf4';
-    await audioPlayer.play(UrlSource(url));
+  Future setAudio(podcastUrl) async {
+    
+    await audioPlayer.play(UrlSource(podcastUrl));
   }
 
   @override
@@ -88,8 +86,8 @@ class _PodcastPageState extends State<PodcastPage> {
 
               //podcast info - podcast cover picture
               PodcastInfo(
-                podcast: widget.podcastName,
-                producer: widget.producerName,
+                podcastName: widget.podcast.name,
+                producer: widget.podcast.producer,
               ),
               const SizedBox(height: 20),
 

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../models/podcast_model.dart';
 import '../utils/snackbar.dart';
 import 'podcast_repository.dart';
 
@@ -11,6 +12,10 @@ final podcastControllerProvider =
     ref.read(podcastRepositoryProvider),
   ),
 );
+
+final getPodcastsProvider = StreamProvider((ref) {
+  return ref.read(podcastControllerProvider.notifier).getPodcasts();
+});
 
 class PodcastController extends StateNotifier<bool> {
   final PodcastRepository _podcastRepository;
@@ -42,5 +47,7 @@ class PodcastController extends StateNotifier<bool> {
     );
   }
 
-
+  Stream<List<PodcastItem>> getPodcasts() {
+    return _podcastRepository.getPodcasts();
+  }
 }
