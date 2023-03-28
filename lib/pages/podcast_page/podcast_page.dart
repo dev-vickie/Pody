@@ -29,17 +29,25 @@ class _PodcastPageState extends State<PodcastPage> {
   void initState() {
     setAudio();
     audioPlayer.onPlayerStateChanged.listen((event) {
-      setState(() {
-        isplaying = event == PlayerState.playing;
-      });
+      if (mounted) {
+        setState(() {
+          isplaying = event == PlayerState.playing;
+        });
+      }
     });
     audioPlayer.onDurationChanged.listen((newDuration) {
-      setState(() {
-        duration = newDuration;
-      });
+      if (mounted) {
+        setState(() {
+          duration = newDuration;
+        });
+      }
     });
     audioPlayer.onPositionChanged.listen((newPosition) {
-      position = newPosition;
+      if (mounted) {
+        setState(() {
+          position = newPosition;
+        });
+      }
     });
     super.initState();
   }
@@ -52,8 +60,15 @@ class _PodcastPageState extends State<PodcastPage> {
 
   @override
   void dispose() {
+    removeAudioListeners();
     audioPlayer.dispose();
     super.dispose();
+  }
+
+  void removeAudioListeners() {
+    audioPlayer.onPlayerStateChanged.drain();
+    audioPlayer.onDurationChanged.drain();
+    audioPlayer.onPositionChanged.drain();
   }
 
   @override
