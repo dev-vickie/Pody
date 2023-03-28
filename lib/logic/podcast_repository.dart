@@ -65,18 +65,16 @@ class PodcastRepository {
     }
   }
 
-  Future<Either<String, List<PodcastItem>>> getPodcasts() async {
-    try {
-      final QuerySnapshot querySnapshot =
-          await _firestore.collection('podcasts').get();
-      final List<PodcastItem> podcasts = querySnapshot.docs
-          .map((doc) => PodcastItem.fromMap(doc as Map<String, dynamic>))
-          .toList();
-
-      return right(podcasts);
-    } catch (e) {
-      return left('Error getting podcasts: ${e.toString()}');
-    }
+  Stream<List<PodcastItem>> getPodcasts() {
+    return _firestore.collection('podcasts').snapshots().map((events) {
+      List<PodcastItem> podcasts = [];
+      for (var podcast in events.docs) {
+        podcasts.add(
+          PodcastItem.fromMap(podcast.data()),
+        );
+      }
+      return podcasts;
+    });
   }
 
   Future<Either<String, String>> deletePodcast(

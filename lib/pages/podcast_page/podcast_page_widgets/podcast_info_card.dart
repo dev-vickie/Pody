@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/neumorphic_box.dart';
 
 class PodcastInfo extends StatelessWidget {
-  final String podcast;
+  final String podcastName;
   final String producer;
-  const PodcastInfo({super.key, required this.podcast, required this.producer});
+  const PodcastInfo({super.key, required this.podcastName, required this.producer});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class PodcastInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      podcast,
+                      podcastName,
                       style: GoogleFonts.openSans(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,

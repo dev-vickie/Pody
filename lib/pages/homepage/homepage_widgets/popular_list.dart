@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:podcast_app/models/podcast_model.dart';
 import 'package:podcast_app/pages/podcast_page/podcast_page.dart';
 import 'package:podcast_app/utils/neumorphic_box.dart';
 
 class PopularPodcastsList extends StatelessWidget {
-  final String pictureUrl;
-  final String podcastName;
-  final String producerName;
+  final PodcastItem podcast;
   const PopularPodcastsList({
+    required this.podcast,
     super.key,
-    required this.podcastName,
-    required this.producerName,
-    required this.pictureUrl
   });
 
   @override
@@ -21,8 +18,7 @@ class PopularPodcastsList extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => PodcastPage(
-              podcastName: podcastName,
-              producerName: producerName,
+            podcast: podcast,
             ),
           ),
         );
@@ -37,13 +33,13 @@ class PopularPodcastsList extends StatelessWidget {
               children: [
                 //Container for image icon
 
-                Padding(
-                  padding: const EdgeInsets.all(5),
+                const Padding(
+                  padding: EdgeInsets.all(5),
                   child: ClipOval(
                     child: Image(
                       height: 60,
                       width: 60,
-                      image: AssetImage(pictureUrl),
+                      image: AssetImage('assets/vmimage.png'),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -58,7 +54,7 @@ class PopularPodcastsList extends StatelessWidget {
                     children: [
                       const SizedBox(height: 5),
                       Text(
-                        podcastName, //podcast name
+                        podcast.name, //podcast name
                         style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -66,7 +62,7 @@ class PopularPodcastsList extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        producerName, //producer
+                        podcast.producer, //producer
                         style: GoogleFonts.openSans(),
                       ),
                       const SizedBox(height: 3),
