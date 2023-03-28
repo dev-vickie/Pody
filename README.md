@@ -1,4 +1,14 @@
-# podcast_app
+## pody
+# Introduction
+
+Pody is a neumorphic podcast app built with flutter and firebase.
+Main packages used:
+ ```dart
+ firebase_storage
+ ```
+* Authenticated uses can access the notes any time they need.
+* Save on space taken by the notes when stored locally.
+* Students can access notes of previous semesters.
 
 <div align="center">
 <img src="screenshots/screen1.png" width="150px"/>
