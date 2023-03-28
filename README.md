@@ -1,5 +1,5 @@
-## pody
-# Introduction
+# pody
+## Introduction
 
 Pody is a neumorphic podcast app built with flutter and firebase.
 
@@ -11,7 +11,7 @@ Main packages used:
  audioplayers - playing audio podcast
  google_fonts - text styling
  ```
-
+# Screenshots
 <div align="center">
 <img src="screenshots/screen1.png" width="150px"/>
 <img src="screenshots/screen2.png" width="150px"/>
