@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "404804582377",
+    "project_id": "pody-784db",
+    "storage_bucket": "pody-784db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404804582377:android:1214c395aabe3b99412978",
+        "android_client_info": {
+          "package_name": "com.example.podcast_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404804582377-li3nlbmios8bgmdu1nahq79hadhhr8ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJdZZM8Lj9p5eynKasuJuy3OKg1nX8NDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404804582377-li3nlbmios8bgmdu1nahq79hadhhr8ku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

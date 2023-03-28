@@ -21,53 +21,49 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               //greetings
-              const Greetings(username: 'melisa'),
-              const SizedBox(
+              Greetings(username: 'melisa'),
+              SizedBox(
                 height: 10,
               ),
               //podcast header name
-              const PodcastHeader(),
-              const SizedBox(
+              PodcastHeader(),
+              SizedBox(
                 height: 40,
               ),
 
-              //search
-              const Search(),
-              const SizedBox(height: 40),
-
               //featuring
-              const FeaturingPodcast(),
-              const SizedBox(height: 20),
+              FeaturingPodcast(),
+              SizedBox(height: 20),
 
               //featuring podcast card
-              const FeaturingPodcastCard(
+              FeaturingPodcastCard(
                 podcastName: 'CODE LIFE BALANCE',
                 producerName: 'Victor Mutethia',
               ),
-              const SizedBox(
+              SizedBox(
                 height: 15,
               ),
 
               // popular and view all text
-              const PopularName(),
-              const SizedBox(height: 10),
+              PopularName(),
+              SizedBox(height: 10),
 
               //popular list
-              SizedBox(
-                height: 300,
-                child: ListView.builder(
-                    itemCount: podcasts.length,
-                    itemBuilder: (context, index) {
-                      PodcastItem podcast = podcasts[index];
-                      return PopularPodcastsList(
-                          podcastName: podcast.name,
-                          producerName: podcast.producer,
-                          pictureUrl: podcast.pictureUrl);
-                    }),
-              ),
-              const SizedBox(height: 10),
+              // SizedBox(
+              //   height: 300,
+              //   child: ListView.builder(
+              //       itemCount: podcasts.length,
+              //       itemBuilder: (context, index) {
+              //         PodcastItem podcast = podcasts[index];
+              //         return PopularPodcastsList(
+              //             podcastName: podcast.name,
+              //             producerName: podcast.producer,
+              //             pictureUrl: podcast.pictureUrl);
+              //       }),
+              // ),
+              SizedBox(height: 10),
             ],
           ),
         ),

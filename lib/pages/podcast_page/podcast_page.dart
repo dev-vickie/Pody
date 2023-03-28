@@ -1,10 +1,8 @@
-//widgets are in lib/widgets/podcast_page_widgets - named as the comments above them
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:podcast_app/pages/podcast_page/podcast_page_widgets/end_drawer.dart';
 import 'package:podcast_app/utils/neumorphic_box.dart';
 import '../../constants/constants.dart';
+import 'podcast_page_widgets/end_drawer.dart';
 import 'podcast_page_widgets/podcast_info_card.dart';
 import 'podcast_page_widgets/top_icons_row.dart';
 
@@ -85,23 +83,11 @@ class _PodcastPageState extends State<PodcastPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    '${position.inMinutes
-                            .remainder(60)
-                            .toString()
-                            .padLeft(2, '0')}:${position.inSeconds
-                            .remainder(60)
-                            .toString()
-                            .padLeft(2, '0')}',
+                    '${position.inMinutes.remainder(60).toString().padLeft(2, '0')}:${position.inSeconds.remainder(60).toString().padLeft(2, '0')}',
                   ),
                   const Icon(Icons.repeat),
                   Text(
-                    '${duration.inMinutes
-                            .remainder(60)
-                            .toString()
-                            .padLeft(2, '0')}:${duration.inSeconds
-                            .remainder(60)
-                            .toString()
-                            .padLeft(2, '0')}',
+                    '${duration.inMinutes.remainder(60).toString().padLeft(2, '0')}:${duration.inSeconds.remainder(60).toString().padLeft(2, '0')}',
                   ),
                 ],
               ),
