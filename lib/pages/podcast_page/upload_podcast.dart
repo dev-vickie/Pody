@@ -55,133 +55,145 @@ class _UploadPodcastPageState extends ConsumerState<UploadPodcastPage> {
         ),
       );
     } else {
-      print("uploading");
-      await ref.read(podcastControllerProvider).uploadPodcast(
+      debugPrint("uploading");
+      await ref
+          .read(podcastControllerProvider.notifier)
+          .uploadPodcast(
             name: nameController.text.trim(),
             producer: producerController.text.trim(),
             date: dateController.text.trim(),
             audioFile: podcastFile!,
             context: context,
-          );
+          )
+          .then((value) => Navigator.of(context).pop());
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final bool isLoading = ref.watch(podcastControllerProvider);
     return Scaffold(
       backgroundColor: AppColors.mainAppColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const NeuBox(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.arrow_back),
-                        ),
-                      ),
-                    ),
-                    const Text("U P L O A D"),
-                    const Text("P O D C A S T"),
-                    GestureDetector(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          debugPrint("Validated");
-                          uploadPodcast(ref);
-                        }
-                      },
-                      child: NeuBox(
-                          child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Text(
-                          "Upload",
-                          style: GoogleFonts.openSans(fontSize: 18),
-                        ),
-                      )),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-                GestureDetector(
-                  onTap: () {
-                    debugPrint("Picking files");
-                    pickFile();
-                  },
-                  child: NeuBox(
-                    child: SizedBox(
-                      height: 100,
-                      width: double.infinity,
-                      child: podcastFile != null
-                          ? Center(
-                              child: Row(
-                                children: [
-                                  const NeuBox(
-                                    child: SizedBox(
-                                      width: 100,
-                                      child: Icon(
-                                        Icons.mic,
-                                        size: 50,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Flexible(
-                                    child: SizedBox(
-                                      child: Text(
-                                        pickedFileName!,
-                                        style:
-                                            GoogleFonts.openSans(fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Select file",
-                                    style: GoogleFonts.openSans(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23,
-                                    ),
-                                  ),
-                                  const Icon(
-                                    Icons.add,
-                                    size: 40,
-                                    color: Colors.black87,
-                                  ),
-                                ],
+      body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Form(
+                key: _formKey,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: const NeuBox(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(Icons.arrow_back),
                               ),
                             ),
-                    ),
+                          ),
+                          const Text("U P L O A D"),
+                          const Text("P O D C A S T"),
+                          GestureDetector(
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                debugPrint("Validated");
+                                uploadPodcast(ref);
+                              }
+                            },
+                            child: NeuBox(
+                                child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Text(
+                                "Upload",
+                                style: GoogleFonts.openSans(fontSize: 18),
+                              ),
+                            )),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {
+                          debugPrint("Picking files");
+                          pickFile();
+                        },
+                        child: NeuBox(
+                          child: SizedBox(
+                            height: 100,
+                            width: double.infinity,
+                            child: podcastFile != null
+                                ? Center(
+                                    child: Row(
+                                      children: [
+                                        const NeuBox(
+                                          child: SizedBox(
+                                            width: 100,
+                                            child: Icon(
+                                              Icons.mic,
+                                              size: 50,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Flexible(
+                                          child: SizedBox(
+                                            child: Text(
+                                              pickedFileName!,
+                                              style: GoogleFonts.openSans(
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Select file",
+                                          style: GoogleFonts.openSans(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 23,
+                                          ),
+                                        ),
+                                        const Icon(
+                                          Icons.add,
+                                          size: 40,
+                                          color: Colors.black87,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      buildTextField(
+                          controller: nameController,
+                          hintText: "Podcast Title"),
+                      const SizedBox(height: 20),
+                      buildTextField(
+                          controller: producerController,
+                          hintText: "Producer Name"),
+                      const SizedBox(height: 20),
+                      buildTextField(
+                          controller: dateController, hintText: "Date"),
+                      const SizedBox(height: 20),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 30),
-                buildTextField(
-                    controller: nameController, hintText: "Podcast Title"),
-                const SizedBox(height: 20),
-                buildTextField(
-                    controller: producerController, hintText: "Producer Name"),
-                const SizedBox(height: 20),
-                buildTextField(controller: dateController, hintText: "Date"),
-                const SizedBox(height: 20),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
