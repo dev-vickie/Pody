@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants/constants.dart';
 import '../../../utils/neumorphic_box.dart';
@@ -26,17 +27,74 @@ class EndDrawer extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(8.0),
                 child: NeuBox(
                   child: ListTile(
-                    title: const Text(
-                      'Upload',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    title: Text(
+                      'About',
+                      style: GoogleFonts.openSans(
+                        fontSize: 19,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    trailing: const Icon(Icons.lightbulb),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: NeuBox(
+                  child: ListTile(
+                    title: Text(
+                      'Favorites',
+                      style: GoogleFonts.openSans(
+                        fontSize: 19,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.favorite,
+                      size: 28,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: NeuBox(
+                  child: ListTile(
+                    title: Text(
+                      'Settings',
+                      style: GoogleFonts.openSans(
+                        fontSize: 19,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     trailing: const Icon(
                       Icons.settings,
                       size: 28,
-                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: NeuBox(
+                  child: ListTile(
+                    title: Text(
+                      'Upload',
+                      style: GoogleFonts.openSans(
+                        fontSize: 19,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.cloud_upload_rounded,
+                      size: 28,
                     ),
                     onTap: () {
                       Navigator.pop(context);
@@ -44,24 +102,6 @@ class EndDrawer extends StatelessWidget {
                         builder: (context) => const UploadPodcastPage(),
                       ));
                     },
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: NeuBox(
-                  child: ListTile(
-                    title: Text('Settings'),
-                    trailing: Icon(Icons.settings),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: NeuBox(
-                  child: ListTile(
-                    title: Text('Settings'),
-                    trailing: Icon(Icons.settings),
                   ),
                 ),
               ),
